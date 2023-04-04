@@ -1,4 +1,4 @@
-import express from "express";
+import express, { text } from "express";
 import multer from "multer";
 import { isAuthenticated, isSeller } from "../middleware/auth/index.js";
 import Product from "../models/Product.js";
@@ -83,6 +83,17 @@ router.delete("/:productId", async(req,res)=>{
         console.log(error)
         return res.status(500).json({error: "Internal server error"})
     }
+})
+router.post('/search',async(req,res)=>{
+  try {
+    let textReg = new RegExp(req.body.text)
+    let result = await Product.find({name :{$regex : textReg}})
+    console.log(result)
+    res.status(200).json({result})
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({error: "Internal server error"})
+  }
 })
 
 export default router;
