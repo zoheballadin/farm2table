@@ -1,7 +1,8 @@
 import express from "express";
 import multer from "multer";
-import { isAuthenticated, isSeller } from "../middleware/auth";
-import Product from "../models/Product";
+import { isAuthenticated, isSeller } from "../middleware/auth/index.js";
+import Product from "../models/Product.js";
+import User from "../models/User.js";
 
 const router = express.Router();
 

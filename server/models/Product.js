@@ -10,7 +10,6 @@ let productSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: true,
-      unique: true,
       maxLength: 70,
     },
     seller: {
@@ -22,7 +21,8 @@ let productSchema = new mongoose.Schema(
         default: 0
     },
     category: {
-        type: String        //fruits and vegetables
+        type: String,
+        enum: ["fruits", "vegetables"]        //fruits and vegetables
     },
     description: {
         type: String,
