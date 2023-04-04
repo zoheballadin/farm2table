@@ -1,9 +1,8 @@
 {
     "PORT": 5001,
     "DB_URI": "mongodb+srv://zoheballadin:Eawkf0901@cluster0.fss2qpr.mongodb.net/farm?retryWrites=true&w=majority",
-    "JWT_KEY": "communitymanagement",
+    "JWT_KEY": "farm2table",
     "URL": "192.168.0.139:5001",
-    "CAL_KEY":"cal_live_f23b424d8e7289c04b3ff5da96c4af05",
     "EMAIL" : {
         "HOST": "mail.zoheb.me",
         "AUTH": {
