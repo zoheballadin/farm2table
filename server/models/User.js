@@ -28,7 +28,8 @@ let userSchema = new mongoose.Schema(
     },
     role: {
         type: String,
-        default: "buyer"        //buyer, seller, admin
+        default: "buyer",
+        enum: ["buyer", "seller", "admin"]        //buyer, seller, admin
     }
   },
   { timestamps: true }

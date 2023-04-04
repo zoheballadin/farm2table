@@ -1,6 +1,7 @@
 import express from "express";
 import sendMail from "../mailer.js";
 import User from "../models/User.js"
+import bcrypt from "bcrypt"
 import {generateToken, isAuthenticated} from "../middleware/auth/index.js"
 
 const router = express.Router();

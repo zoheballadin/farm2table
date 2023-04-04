@@ -18,7 +18,7 @@ router.post("/add", isAuthenticated, async(req,res)=>{
 
         let order = new Order(req.body);
         await order.save()
-        Product.findByIdAndUpdate(req.body.product, {$set: {stock: product.stock - req.body.qty}})
+        await Product.findByIdAndUpdate(req.body.product, {$set: {stock: product.stock - req.body.qty}})
     } catch (error) {
         console.log(error)
         return res.status(500).json({error: "Internal server error"})
