@@ -16,6 +16,7 @@ let userSchema = new mongoose.Schema(
     phone: {
       type: String,
       maxLength: 13,
+      required: true
     },
     password: {
       type: String,
@@ -25,6 +26,10 @@ let userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+        type: String,
+        default: "buyer"        //buyer, seller, admin
+    }
   },
   { timestamps: true }
 );
