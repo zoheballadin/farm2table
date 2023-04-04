@@ -1,10 +1,11 @@
 import express from "express";
-
+import userRoutes from "./controllers/user.js"
+import "./dbConnect.js"
 const port = 5001;
 
 const app = express();
 
-
+app.use("/api/user", userRoutes)
 
 
 
