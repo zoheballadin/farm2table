@@ -37,6 +37,7 @@ const Search = () => {
             <div>{ele.description}</div>
             <div>{ele.price}</div>
             <div>{ele.stock}</div>
+            <div>{ele.seller.fullname}</div>
             <br />
             <br />
           </div>
