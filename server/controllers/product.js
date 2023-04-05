@@ -95,7 +95,7 @@ router.delete("/:productId", async (req, res) => {
 });
 router.post("/search", async (req, res) => {
   try {
-    let textReg = new RegExp(req.body.text);
+    let textReg = new RegExp( req.body.text.substring(0,1), 'ig');
     let result = await Product.find({ name: { $regex: textReg } }).populate(
       "seller"
     );
