@@ -28,6 +28,7 @@ const Product = () => {
         console.log(token)
         const {data} = await axios.post('/api/order/add',
         {
+          product : product._id,
           price : product.price,
           qty : quantity.current.value
         },
