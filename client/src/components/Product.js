@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const Product = () => {
@@ -8,6 +8,7 @@ const Product = () => {
       name : '',
       imageUrl : ''
     })
+    const quantity = useRef()
     useEffect(()=>{
       const fetch = async ()=>{
         try {
@@ -21,15 +22,26 @@ const Product = () => {
       fetch()
     },[])
     const buy = async ()=>{
+    if(window.confirm('Confirm buy\n' + 'quantity : ' + quantity.current.value + '\nprice : ' +product.price + '\ntotal : ' + product.price * quantity.current.value)){
       try {
-        const {data} = await axios.post('/api/order/add',{
+        let token =  JSON.parse(localStorage.getItem('token')).token
+        console.log(token)
+        const {data} = await axios.post('/api/order/add',
+        {
+          price : product.price,
+          qty : quantity.current.value
+        },
+        
+        {
           headers : {
-            'auth-token' : JSON.parse(localStorage.getItem('token')).token
+            'auth-token' : token
           }
         })
+        console.log(data)
       } catch (error) {
         console.log(error)
       }
+    }
     }
   return (
     <>
@@ -39,6 +51,7 @@ const Product = () => {
       <div>{product.category}</div>
       <div>{product.price}</div>
       <div>{product.stock}</div>
+      <span>Quantity</span><input ref={quantity} type='number'/>
       <button onClick={buy}>Buy Now</button><br/>
       <button >Chat</button>
     </>
