@@ -21,13 +21,13 @@ export const Login = () => {
             role: data.role,
           };
           localStorage.setItem("token", JSON.stringify(tokenData));
-        //   if (data.role == "user") {
-        //     return navigate("/userdashboard");
-        //   } else if (data.role == "admin") {
-        //     return navigate("/admin");
-        //   } else {
-        //     localStorage.removeItem("token");
-        //   }
+          if (data.role == "buyer") {
+            return navigate("/home");
+          } else if (data.role == "seller") {
+            return navigate("/homeadmin");
+          } else {
+            localStorage.removeItem("token");
+          }
         } catch (error) {
           console.log(error)
         }

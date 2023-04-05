@@ -8,10 +8,14 @@ import { OrderInfo } from "./components/OrderInfo";
 import AddProduct from "./components/AddProduct";
 import { SellerOrders } from "./components/SellerOrders";
 import { OrderInfoSeller } from "./components/OrderInfoSeller";
+import Home from "./components/home/screen/Home";
+import Productadd from "./components/home/screen/Productadd";
 
 function App() {
   return (
     <Routes>
+      <Route path="/home" element={<Home/>}/>
+      <Route path="/home/addproduct" element={<Productadd/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/search" element={<Search/>}/>
