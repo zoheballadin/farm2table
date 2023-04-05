@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Header from './home/screen/Header'
 export const UserOrders = () => {
     let navigate = useNavigate()
     const [orders, setOrders] = useState([])
@@ -22,7 +23,10 @@ export const UserOrders = () => {
 
 
   return (
-    <div class="main-event ml-5 px-4 sm:px-8  mt-4 ">
+    <>
+    <Header/>
+    <div class="main-event ml-5 px-4 sm:px-8  mt-16 ">
+      
         <div class="eventTable py-8 ">
           <h2 class=" ml-60 mb-5 text-3xl font-bold leading-tight text-black-800 text-center">Your Orders</h2>
           <div>
@@ -86,6 +90,6 @@ export const UserOrders = () => {
           
         </div>
       </div>
-
+      </>
   )
 }

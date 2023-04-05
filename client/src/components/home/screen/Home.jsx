@@ -16,7 +16,7 @@ function Home() {
        console.log(data)
        setuserdata(data)
     }
-    useEffect(async () => {
+    useEffect( () => {
        getUser()
       },[]);
   return (

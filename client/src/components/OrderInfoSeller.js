@@ -8,7 +8,7 @@ export const OrderInfoSeller = () => {
         product: {
             imageUrl: ""
         },
-        seller: {
+        buyer: {
             fullname: ""
         }
     })

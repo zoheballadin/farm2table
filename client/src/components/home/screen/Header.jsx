@@ -3,7 +3,11 @@ import "./Header.css"
 import { Link } from 'react-router-dom'
 import Modal from './Productadd'
 
+
+
 function Header() {
+  let token = localStorage.getItem("token")
+  token = JSON.parse(token)
   return (
     <>
 
@@ -18,21 +22,21 @@ function Header() {
       <nav className="header-list-nav">
         <ul>
           <li>
-            <Link className="active" href="index.html">
+            <Link className="active" to="/">
               Home
             </Link>
           </li>
           <li>
             <Link to="#">Add</Link>
           </li>
+          {token && <li>
+            <Link to={token.role=="buyer"  ? "/user/orders" : "/seller/orders"}>My orders</Link>
+          </li>}
           <li>
-            <Link to="blog.html">Blog</Link>
+            <Link to="contact.html">Contact</Link>
           </li>
           <li>
             <Link to="about.html">Signout</Link>
-          </li>
-          <li>
-            <Link to="contact.html">Contact</Link>
           </li>
         </ul>
       </nav>
