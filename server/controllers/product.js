@@ -25,7 +25,7 @@ router.post(
   "/add",
   isAuthenticated,
   isSeller,
-  upload.single("product"),
+  upload.single("productImage"),
   async (req, res) => {
     try {
       let findUser = await User.findById(req.payload.id);
