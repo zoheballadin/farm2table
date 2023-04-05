@@ -12,7 +12,7 @@ function Main() {
         <button>Shop now</button>
       </section>
 
-      <section id="features" className="section-p1">
+      {/* <section id="features" className="section-p1">
         <div className="f-box">
           <img src="https://res.cloudinary.com/dgjmrmajh/image/upload/v1680682143/f1_vr0ihn.png" alt="free shipping" />
           <h6>Free shipping</h6>
@@ -37,7 +37,10 @@ function Main() {
           <img src="https://res.cloudinary.com/dgjmrmajh/image/upload/v1680682162/f6_m6l4m0.png" alt="24/7 support" />
           <h6>24/7 support</h6>
         </div>
-      </section>
+      </section> */}
+      
+
+
       </>
 
   )

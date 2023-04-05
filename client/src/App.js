@@ -11,6 +11,7 @@ import { OrderInfoSeller } from "./components/OrderInfoSeller";
 import Home from "./components/home/screen/Home";
 import Productadd from "./components/home/screen/Productadd";
 import { SellerProducts } from "./components/SellerProducts";
+import { Signout } from "./components/Signout";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       <Route path="/seller/products" element={<SellerProducts/>}/>
       <Route path="/user/order/:orderId" element={<OrderInfo/>}/>
       <Route path="/product/add" element={<AddProduct/>}/>
-
+      <Route path="/signout" element={<Signout/>}/>
       <Route path="/seller/order/:orderId" element={<OrderInfoSeller/>}/>
 
 

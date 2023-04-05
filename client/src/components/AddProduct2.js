@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useRef } from "react";
+import Header from "./home/screen/Header";
 
 const AddProduct = () => {
   const name = useRef();
@@ -57,6 +58,7 @@ const AddProduct = () => {
       onSubmit={addProduct}
       className="min-h-screen bg-gradient-to-tr from-cyan-300 to-fuchsia-600 py-6 flex flex-col justify-center sm:py-12"
     >
+      <Header/>
       <div className="relative   sm:max-w-6xl md:w-7/12 sm:mx-auto">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-50 to-amber-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">

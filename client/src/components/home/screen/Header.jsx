@@ -36,7 +36,7 @@ function Header() {
             <Link to="contact.html">Contact</Link>
           </li> */}
           <li>
-            {token ? <Link to="/" onClick={()=>localStorage.removeItem("token")}>Signout</Link> : <Link to="/login" onClick={()=>localStorage.removeItem("token")}>Login</Link>}
+            {token ? <Link to="/signout" >Signout</Link> : <Link to="/login" >Login</Link>}
           </li>
         </ul>
       </nav>
