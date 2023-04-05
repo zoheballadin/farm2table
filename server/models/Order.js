@@ -26,7 +26,7 @@ let orderSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-})
+}, {timestamps: true})
 
 let Order = mongoose.model("Order", orderSchema, "orders")
 
