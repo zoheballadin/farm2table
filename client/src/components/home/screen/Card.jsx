@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card({ orderdata }) {
   console.log(orderdata + "card");
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap ml-40">
       {
         orderdata.length ?
  orderdata.map((ele) => (

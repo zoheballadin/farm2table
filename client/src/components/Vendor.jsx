@@ -13,7 +13,7 @@ function Vendor() {
           let userParam = urlparams.get("user")
           const token = JSON.parse(localStorage.getItem('token'));
           console.log(token);
-          let response = await axios.get(`http://localhost:5001/api/order/search/${userParam}`, {
+          let response = await axios.get(`/api/order/search/${userParam}`, {
             headers: {
               "auth-token": token.token
             }

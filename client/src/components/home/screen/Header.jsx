@@ -30,9 +30,9 @@ function Header() {
           {token && <li>
             <Link to={(token && token.role=="buyer")  ? "/user/orders" : "/seller/orders"}>My orders</Link>
           </li>}
-          <li>
+          {!token && <li>
             <Link to="/register">Signup</Link>
-          </li>
+          </li>}
           <li>
             {token ? <Link to="/signout" >Signout</Link> : <Link to="/login" >Login</Link>}
           </li>
