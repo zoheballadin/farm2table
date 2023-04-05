@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import Search from "./components/Search";
-import Product from "./components/Product";
+import Product from "./components/Product2";
 import { UserOrders } from "./components/UserOrders";
 import { OrderInfo } from "./components/OrderInfo";
 
