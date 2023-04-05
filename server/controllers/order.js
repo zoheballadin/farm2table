@@ -65,6 +65,14 @@ router.get("/:orderId", isAuthenticated, async(req,res)=>{
         return res.status(500).json({error: "Internal server error"})
     }
 })
-
+router.delete('/:orderId',isAuthenticated,async(req,res)=>{
+    try {
+        let result = await Order.deleteOne({_id : req.params.orderId})
+        console.log(result)
+        res.status(200).json({msg : 'Order cancelled'})
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 export default router

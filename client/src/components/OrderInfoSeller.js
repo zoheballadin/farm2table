@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export const OrderInfoSeller = () => {
 
@@ -8,10 +8,11 @@ export const OrderInfoSeller = () => {
         product: {
             imageUrl: ""
         },
-        seller: {
+        buyer: {
             fullname: ""
         }
     })
+    const navigate = useNavigate()
     const getOrder = async() =>{
         try {
             let token = localStorage.getItem("token");
@@ -34,6 +35,23 @@ export const OrderInfoSeller = () => {
   useEffect(()=>{
     getOrder()
   },[])
+  const cancelOrder = async ()=>{
+    try {
+      if(window.confirm('cancel order')){
+        let token = localStorage.getItem("token");
+      token = JSON.parse(token);
+      let { data } = await axios.delete(`/api/order/${orderId}`, {
+        headers: {
+          "auth-token": token.token,
+        },
+      });
+      alert('order cancelled')
+      navigate('/seller/orders',{replace: true})
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
     return (
    
 <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
@@ -170,6 +188,7 @@ export const OrderInfoSeller = () => {
           </div>
           <div class="flex w-full justify-center items-center md:justify-start md:items-start mt-12">
             <button class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">View Details</button>
+            <button onClick={cancelOrder} class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Cancel Order</button>
           </div>
         </div>
       </div>
