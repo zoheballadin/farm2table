@@ -32,7 +32,7 @@ router.post(
       if (!findUser) {
         return res.status(401).json({ error: "User does not exist" });
       }
-
+console.log(req.file)
       if (req.file) req.body.imageUrl = `/api/assets/${req.file.filename}`;
       req.body.seller = req.payload.id;
       let product = new Product(req.body);

@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useRef } from "react";
 import Header from "./home/screen/Header";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
+  let navigate = useNavigate()
   const name = useRef();
   const price = useRef();
   const category = useRef();
@@ -12,13 +14,13 @@ const AddProduct = () => {
   const addProduct = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("name", name.current.value);
-      formData.append("price", price.current.value);
-      formData.append("category", category.current.value);
-      formData.append("description", description.current.value);
-      formData.append("stock", stock.current.value);
-      formData.append("productImage", productImage.current);
+      const formData = new FormData(e.target);
+      // formData.append("name", name.current.value);
+      // formData.append("price", price.current.value);
+      // formData.append("category", category.current.value);
+      // formData.append("description", description.current.value);
+      // formData.append("stock", stock.current.value);
+      // formData.append("productImage", productImage.current);
       try {
         const token = JSON.parse(localStorage.getItem("token")).token;
         const { data } = await axios.post("/api/product/add", formData, {
@@ -27,6 +29,7 @@ const AddProduct = () => {
           },
         });
         console.log(data);
+        navigate("/seller/products")
       } catch (error) {
         console.log(error);
       }
@@ -37,6 +40,7 @@ const AddProduct = () => {
   const onFileChange = (e) => {
     e.preventDefault();
     const file = e.target.files;
+    
     const extension = file[0].name.split(".").pop();
     if (
       extension != "jpeg" &&
@@ -147,7 +151,7 @@ const AddProduct = () => {
                   <span class="mt-2 text-base leading-normal">
                     Upload a picture
                   </span>
-                  <input onChange={onFileChange} name="productImage" type="file" class="hidden" />
+                  <input  name="productImage" type="file" class="hidden" />
                 </label>
 
                 <div className="relative ">

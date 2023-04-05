@@ -10,7 +10,7 @@ export const SellerOrders = () => {
           name: ""
         },
         buyer: {
-          fullnamename: ""
+          fullname: ""
         }
       }
     ])
@@ -64,7 +64,7 @@ export const SellerOrders = () => {
                   <td  class="px-5 py-5 border-b border-gray-200 bg-white whitespace-nowrap table-cell">{item.total}</td>
                   {/* <td>{item.responses}</td> */}
                   <td  class="px-5 py-5 border-b border-gray-200 bg-white text-left table-cell">
-                    {item.buyer.fullname} 
+                    {item.buyer && item.buyer.fullname} 
                     {/* <DeleteOutline
                     //   onClick={() => onDelete(item._id)}
                       class="eventListDelete  h-10 w-7 ml-7 text-center"
