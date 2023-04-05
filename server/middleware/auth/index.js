@@ -15,6 +15,7 @@ const generateToken = (payload) =>{
 const isAuthenticated = (req, res, next) => {
   try {
     let token = req.headers["auth-token"];
+    console.log(token)
     let payload = jwt.verify(token, config.get("JWT_KEY"));
     req.payload = payload;
     return next()
