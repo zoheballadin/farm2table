@@ -5,11 +5,12 @@ import Search from "./components/Search";
 import Product from "./components/Product2";
 import { UserOrders } from "./components/UserOrders";
 import { OrderInfo } from "./components/OrderInfo";
-import AddProduct from "./components/AddProduct";
+import AddProduct from "./components/AddProduct2";
 import { SellerOrders } from "./components/SellerOrders";
 import { OrderInfoSeller } from "./components/OrderInfoSeller";
 import Home from "./components/home/screen/Home";
 import Productadd from "./components/home/screen/Productadd";
+import { SellerProducts } from "./components/SellerProducts";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/product/:productId" element={<Product/>}/>
       <Route path="/user/orders" element={<UserOrders/>}/>
       <Route path="/seller/orders" element={<SellerOrders/>}/>
+      <Route path="/seller/products" element={<SellerProducts/>}/>
       <Route path="/user/order/:orderId" element={<OrderInfo/>}/>
       <Route path="/product/add" element={<AddProduct/>}/>
 

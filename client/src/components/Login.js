@@ -22,9 +22,9 @@ export const Login = () => {
           };
           localStorage.setItem("token", JSON.stringify(tokenData));
           if (data.role == "buyer") {
-            return navigate("/home");
+            return navigate("/");
           } else if (data.role == "seller") {
-            return navigate("/homeadmin");
+            return navigate("/seller/orders");
           } else {
             localStorage.removeItem("token");
           }

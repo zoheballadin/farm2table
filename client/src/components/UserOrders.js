@@ -47,7 +47,7 @@ export const UserOrders = () => {
             </thead>
             <tbody>
               {orders.map((item, index) => (
-                <tr key={index + 1} className='table-row'>
+              item.product &&  <tr key={index + 1} className='table-row'>
                   <td  class="px-4 py-4 border-b border-gray-200 bg-white break-normal table-cell">{item.product.name}</td>
                   <td  class="px-4 py-4 border-b border-gray-200 bg-white w-60 table-cell">
                     {item.qty}

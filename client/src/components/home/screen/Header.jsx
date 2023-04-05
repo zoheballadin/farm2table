@@ -22,21 +22,21 @@ function Header() {
       <nav className="header-list-nav">
         <ul>
           <li>
-            <Link className="active" to="/">
+            {(!token || token.role=="buyer") ? <Link className="active" to="/">
               Home
-            </Link>
+            </Link> : <Link to="/seller/products">My products</Link>}
           </li>
-          <li>
-            <Link to="#">Add</Link>
-          </li>
-          {token && <li>
-            <Link to={token.role=="buyer"  ? "/user/orders" : "/seller/orders"}>My orders</Link>
+          {(token && token.role=="seller") && <li>
+            <Link to="/product/add">Add</Link>
           </li>}
-          <li>
+          {token && <li>
+            <Link to={(token && token.role=="buyer")  ? "/user/orders" : "/seller/orders"}>My orders</Link>
+          </li>}
+          {/* <li>
             <Link to="contact.html">Contact</Link>
-          </li>
+          </li> */}
           <li>
-            <Link to="about.html">Signout</Link>
+            {token ? <Link to="/" onClick={()=>localStorage.removeItem("token")}>Signout</Link> : <Link to="/login" onClick={()=>localStorage.removeItem("token")}>Login</Link>}
           </li>
         </ul>
       </nav>
