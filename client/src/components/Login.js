@@ -29,7 +29,9 @@ export const Login = () => {
             localStorage.removeItem("token");
           }
         } catch (error) {
-          console.log(error)
+          console.log(error.response.data.error)
+          alert(error.response.data.error)
+
         }
       };
 

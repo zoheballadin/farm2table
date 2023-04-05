@@ -12,6 +12,7 @@ import Home from "./components/home/screen/Home";
 import Productadd from "./components/home/screen/Productadd";
 import { SellerProducts } from "./components/SellerProducts";
 import { Signout } from "./components/Signout";
+import Vendor from "./components/Vendor";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/search" element={<Search/>}/>
+      <Route path="/vendor" element={<Vendor/>}/>
       <Route path="/product/:productId" element={<Product/>}/>
       <Route path="/user/orders" element={<UserOrders/>}/>
       <Route path="/seller/orders" element={<SellerOrders/>}/>

@@ -2,12 +2,13 @@ import express from "express";
 import userRoutes from "./controllers/user.js"
 import productRoutes from "./controllers/product.js"
 import orderRoutes from "./controllers/order.js"
+import cors from "cors"
 import "./dbConnect.js"
 
 const port = 5001;
 
 const app = express();
-
+app.use(cors())
 app.use(express.json())
 
 app.use("/api/assets", express.static("assets"))

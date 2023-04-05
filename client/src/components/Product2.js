@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from './home/screen/Header'
 
 const Product = () => {
+
   let navigate = useNavigate()
     const {productId} = useParams()
     const [product,setProduct] = useState({
@@ -117,7 +118,7 @@ const Product = () => {
           <span class="title-font font-medium text-2xl text-gray-900">Rs. {product.price} per kg</span>
           <br/>
           <span class="title-font font-medium text-2xl text-gray-900">Current Stock: {product.stock}</span><br/>
-          <span class="title-font font-medium text-2xl text-gray-900">Vendor: {product.seller.fullname}</span>
+       <span class="title-font font-medium text-2xl text-gray-900 bg-red-500 border-4 border-black "> <Link to={`/vendor?user=${product.seller.fullname}`}> Vendor: {product.seller.fullname}</Link> </span>
 
           <button onClick={buy} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button>
           {/* <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
