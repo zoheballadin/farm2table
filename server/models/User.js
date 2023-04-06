@@ -34,11 +34,18 @@ let userSchema = new mongoose.Schema(
         type: String,
         default: "buyer",
         enum: ["buyer", "seller", "admin"]        //buyer, seller, admin
+    },
+    isApprove : {
+      type : Boolean,
+      default : false
     }
   },
+  
   { timestamps: true }
 );
 
+//admin
+//approve or reject 
 let User = mongoose.model("User", userSchema, "users");
 
 export default User;
