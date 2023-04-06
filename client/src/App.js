@@ -14,6 +14,10 @@ import { Signout } from "./components/Signout";
 import Vendor from "./components/Vendor";
 import { Profile } from "./components/Profile";
 import axios from "axios";
+import { AdminLogin } from "./components/AdminLogin";
+import AdminDashboard from "./components/AdminDashboard";
+import SellerRequests from "./components/SellerRequests";
+import SearchSellers from "./components/SearchSellers";
 
 function App() {
   let navigate = useNavigate();
@@ -59,6 +63,16 @@ function App() {
       <Route path="/product/add" element={<AddProduct verifyToken={verifyToken}/>} />
       <Route path="/signout" element={<Signout />} />
       <Route path="/seller/order/:orderId" element={<OrderInfoSeller verifyToken={verifyToken} />} />
+      
+      //admin
+      <Route path="/admin/login" element={<AdminLogin />} />    
+      <Route path="/admin/home" element={<AdminDashboard />} />    
+      <Route path="/admin/requests" element={<SellerRequests />} />    
+      <Route path="/admin/searchsellers" element={<SearchSellers />} />    
+
+
+      
+
     </Routes>
   );
 }
