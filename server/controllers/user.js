@@ -3,10 +3,10 @@ import sendMail from "../mailer.js";
 import User from "../models/User.js"
 import bcrypt from "bcrypt"
 import {generateToken, isAuthenticated} from "../middleware/auth/index.js"
-
+import { registerValidation, loginValidation, errorMiddleware } from "../middleware/validations/index.js";
 const router = express.Router();
 
-router.post("/register", async(req,res)=>{
+router.post("/register", registerValidation(), errorMiddleware, async(req,res)=>{
     try {
         let findUser = await User.findOne({ email: req.body.email });
         if (findUser) {
@@ -14,7 +14,9 @@ router.post("/register", async(req,res)=>{
         }
         req.body.password = await bcrypt.hash(req.body.password, 12);
   
-        
+        if(req.body.role == "admin"){
+          return res.status(400).json({message: "invalid role"})
+        }
   
         let user = new User(req.body);
         await user.save();
@@ -30,7 +32,7 @@ router.post("/register", async(req,res)=>{
     }
 })
 
-router.post("/login",  async (req, res) => {
+router.post("/login", loginValidation(), errorMiddleware,  async (req, res) => {
     try {
       let { email, password } = req.body;
       let findUser = await User.findOne({ email: email });
@@ -92,6 +94,19 @@ router.get("/auth", isAuthenticated, async(req,res)=>{
     return res.status(200).json(req.payload)
   } catch (error) {
     console.log(error);
+    return res.status(500).json({error: "Internal server error"})
+  }
+})
+
+router.get("/profile", isAuthenticated, async(req,res)=>{
+  try {
+    let user = await User.findById(req.payload.id);
+    if(!user){
+      return res.status(401).json({error: "User does not exist"})
+    }
+    return res.status(200).json(user)
+  } catch (error) {
+    console.log(error)
     return res.status(500).json({error: "Internal server error"})
   }
 })

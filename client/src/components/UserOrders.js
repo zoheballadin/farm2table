@@ -18,7 +18,7 @@ export const UserOrders = ({verifyToken}) => {
     }
 
     useEffect(()=>{
-      verifyToken("user")
+      verifyToken("buyer")
         getOrders()
     },[])
 
