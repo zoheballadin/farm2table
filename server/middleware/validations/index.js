@@ -11,7 +11,8 @@ const registerValidation = () => {
     body("bio", "Bio must contain at least 10 characters").isLength({
       min: 10,
     }),
-    body("profession", "Profession cannot be empty").notEmpty(),
+    body("address", "Address cannot be empty").notEmpty(),
+    body("role", "invalid role").notEmpty(),
     body("password", "Password must contain at least 7 characters").isLength({
       min: 7,
     }),
@@ -43,10 +44,10 @@ const editUserValidation = () => {
     }),
     body("email", "Valid email is required").isEmail(),
     body("phone", "Valid phone number is required").isMobilePhone(),
-    body("bio", "Bio must contain at least 10 characters").isLength({
+    body("address", "Address must contain at least 10 characters").isLength({
       min: 10,
     }),
-    body("profession", "Profession cannot be empty").notEmpty(),
+    body("role", "role cannot be empty").notEmpty(),
   ];
 };
 

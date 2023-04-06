@@ -18,6 +18,10 @@ let userSchema = new mongoose.Schema(
       maxLength: 13,
       required: true
     },
+    bio: {
+      type: String,
+      maxLength: 500
+    },
     password: {
       type: String,
       required: true,
