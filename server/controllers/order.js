@@ -77,7 +77,7 @@ router.delete('/:orderId',isAuthenticated,async(req,res)=>{
 })
 
 
-router.get("/search/:username", isAuthenticated, async (req, res) => {
+router.get("/search/:username",  async (req, res) => {
     try {
       let text = req.params.username
       const response = await User.find({ _id: text })

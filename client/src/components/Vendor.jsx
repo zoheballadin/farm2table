@@ -11,13 +11,8 @@ function Vendor() {
           const querystring = window.location.search;
           const urlparams = new URLSearchParams(querystring)
           let userParam = urlparams.get("user")
-          const token = JSON.parse(localStorage.getItem('token'));
-          console.log(token);
-          let response = await axios.get(`/api/order/search/${userParam}`, {
-            headers: {
-              "auth-token": token.token
-            }
-          })   
+          
+          let response = await axios.get(`/api/order/search/${userParam}`)   
           console.log(response.data)
           setuserdata(response.data.userdata)
           setproddata(response.data.products)
