@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export const OrderInfo = () => {
+export const OrderInfo = ({verifyToken}) => {
   const [order, setOrder] = useState({
     product: {
       imageUrl: "",
@@ -37,6 +37,7 @@ export const OrderInfo = () => {
   console.log(orderId);
 
   useEffect(() => {
+    verifyToken("buyer")
     getOrder();
   }, []);
 

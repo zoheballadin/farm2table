@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-export const OrderInfoSeller = () => {
+export const OrderInfoSeller = ({verifyToken}) => {
 
     const [order, setOrder] = useState({
         product: {
@@ -33,6 +33,7 @@ export const OrderInfoSeller = () => {
   console.log(orderId)
 
   useEffect(()=>{
+    verifyToken("seller")
     getOrder()
   },[])
   const cancelOrder = async ()=>{

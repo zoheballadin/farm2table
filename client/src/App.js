@@ -52,13 +52,13 @@ function App() {
       
       <Route path="/vendor" element={<Vendor />} />
       <Route path="/product/:productId" element={<Product />} />
-      <Route path="/user/orders" element={<UserOrders />} />
-      <Route path="/seller/orders" element={<SellerOrders />} />
-      <Route path="/seller/products" element={<SellerProducts />} />
-      <Route path="/user/order/:orderId" element={<OrderInfo />} />
+      <Route path="/user/orders" element={<UserOrders verifyToken={verifyToken}/>} />
+      <Route path="/seller/orders" element={<SellerOrders verifyToken={verifyToken}/>} />
+      <Route path="/seller/products" element={<SellerProducts verifyToken={verifyToken}/>} />
+      <Route path="/user/order/:orderId" element={<OrderInfo verifyToken={verifyToken}/>} />
       <Route path="/product/add" element={<AddProduct verifyToken={verifyToken}/>} />
       <Route path="/signout" element={<Signout />} />
-      <Route path="/seller/order/:orderId" element={<OrderInfoSeller />} />
+      <Route path="/seller/order/:orderId" element={<OrderInfoSeller verifyToken={verifyToken} />} />
     </Routes>
   );
 }

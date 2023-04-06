@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Header from './home/screen/Header'
-export const UserOrders = () => {
+export const UserOrders = ({verifyToken}) => {
     let navigate = useNavigate()
     const [orders, setOrders] = useState([])
 
@@ -18,6 +18,7 @@ export const UserOrders = () => {
     }
 
     useEffect(()=>{
+      verifyToken("user")
         getOrders()
     },[])
 
