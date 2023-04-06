@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import formatDate from "../utils/function";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const OrderInfo = () => {
   const [order, setOrder] = useState({
@@ -51,7 +54,7 @@ export const OrderInfo = () => {
           "auth-token": token.token,
         },
       });
-      alert('order cancelled')
+     toast.success("Order Cancelled Successfully")
       navigate('/user/orders',{replace: true})
       }
     } catch (error) {
@@ -64,6 +67,16 @@ export const OrderInfo = () => {
         <h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">
           Order #{order._id}
         </h1>
+        <ToastContainer position="top-left"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark" />
         <p class="text-base dark:text-gray-300 font-medium leading-6 text-gray-600">
           {formatDate(order.createdAt)}
         </p>

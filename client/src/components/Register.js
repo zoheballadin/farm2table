@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Register = () => {
   let navigate = useNavigate();
@@ -27,10 +29,11 @@ export const Register = () => {
     try {
         e.preventDefault()
       let { data } = await axios.post("/api/user/register", userData);
-      alert(data.message);
+      toast.success(data.message)
     //   navigate("/login");
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.error)
+      console.log(error.response.data.error);
     }
   };
 
@@ -72,6 +75,7 @@ export const Register = () => {
                   {/* <label htmlFor="name" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Enter your Name</label> */}
                 </div>
                 <div className="relative flex -ml-12 flex-wrap lg:flex-nowrap space-x-16">
+                <ToastContainer/>
                   <input
                     onChange={onChangeHandler}
                     autoComplete="off"

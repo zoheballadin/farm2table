@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const Login = () => {
@@ -29,8 +31,9 @@ export const Login = () => {
             localStorage.removeItem("token");
           }
         } catch (error) {
+          toast.error(error.response.data.error)
           console.log(error.response.data.error)
-          alert(error.response.data.error)
+        
 
         }
       };
@@ -79,6 +82,7 @@ export const Login = () => {
                   />
                   {/* <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label> */}
                 </div>
+                <ToastContainer/>
 
                 <div className="relative">
                   <button type="submit" onClick={onSubmit} className="bg-fuchsia-600 hover:bg-sky-500 ml-44 mt-3 -mb-28 text-white rounded-md px-2 py-1">

@@ -24,8 +24,8 @@ function Header() {
 <header>
   <div id="header">
     <div className="header-logo">
-      <Link href="indext.html">
-        <img className='w-28' src="https://res.cloudinary.com/dgjmrmajh/image/upload/v1680686958/Screenshot_from_2023-04-05_14-58-01-removebg-preview_di9xm4.png" alt="" />
+      <Link to={"/"}>
+        <img className='w-28' src="https://res.cloudinary.com/dgjmrmajh/image/upload/v1680799451/Screenshot_from_2023-04-06_22-12-19-removebg-preview_t3tkzx.png" alt="" />
       </Link>
     </div>
     <div className="header-list">
