@@ -80,11 +80,8 @@ router.delete('/:orderId',isAuthenticated,async(req,res)=>{
 router.get("/search/:username", isAuthenticated, async (req, res) => {
     try {
       let text = req.params.username
-      text = text.trim();
-      text = new RegExp(text, "i");
-      const response = await User.find({ fullname: { $regex: text } })
+      const response = await User.find({ _id: text })
       const products = await Product.find({seller: response[0]._id})
-
       let data = {products:products,
         userdata:response}
       return res.status(200).json(data)

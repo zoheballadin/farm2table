@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import formatDate from "../utils/function";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const OrderInfo = () => {
@@ -12,6 +13,7 @@ export const OrderInfo = () => {
     },
   });
   const navigate = useNavigate()
+
   const getOrder = async () => {
     try {
       let token = localStorage.getItem("token");
@@ -34,6 +36,10 @@ export const OrderInfo = () => {
   useEffect(() => {
     getOrder();
   }, []);
+
+  function usernaviagate(){
+    navigate(`/vendor?user=${order.seller._id}`)
+  }
 
   const cancelOrder = async () => {
     try {
@@ -59,7 +65,7 @@ export const OrderInfo = () => {
           Order #{order._id}
         </h1>
         <p class="text-base dark:text-gray-300 font-medium leading-6 text-gray-600">
-          {order.createdAt}
+          {formatDate(order.createdAt)}
         </p>
       </div>
       <div class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
@@ -192,7 +198,7 @@ export const OrderInfo = () => {
                     {order.seller.fullname}
                   </p>
                   <p class="text-sm dark:text-gray-300 leading-5 text-gray-600">
-                    joined {order.seller.createdAt}
+                    Joined : {formatDate(order.seller.createdAt)}
                   </p>
                 </div>
               </div>
@@ -251,8 +257,8 @@ export const OrderInfo = () => {
                 </div>
               </div>
               <div class="flex w-full justify-center items-center md:justify-start md:items-start mt-12">
-                <button class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">
-                  View Details
+                <button onClick={usernaviagate} class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">
+                View Details 
                 </button>
                 <button
                   onClick={cancelOrder}

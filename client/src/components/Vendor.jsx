@@ -134,7 +134,7 @@ function Vendor() {
     </div>
   </div>
   <div className="flex-wrap">
-    {console.log(productdata)}
+
   <List productdataset={productdata}/>
   </div>
   
