@@ -64,7 +64,7 @@ export const OrderInfo = () => {
       </div>
       <div class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
         <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-          <div class="flex flex-col justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+          <div class="flex flex-col justify-start items-start shadow-lg rounded-lg dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
             <p class="text-lg md:text-xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
               Your Order
             </p>
@@ -139,7 +139,7 @@ export const OrderInfo = () => {
           </div>
         </div> */}
           </div>
-          <div class="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+          <div class="flex justify-center flex-col md:flex-row shadow-lg rounded-lg items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
             <div class="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-800 space-y-6">
               <h3 class="text-xl dark:text-white font-semibold leading-5 text-gray-800">
                 Summary
@@ -175,7 +175,7 @@ export const OrderInfo = () => {
             
           </div>
         </div>
-        <div class="bg-gray-50 dark:bg-gray-800 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+        <div class="bg-gray-50 dark:bg-gray-800 w-full xl:w-96 flex shadow-lg rounded-lg justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
           <h3 class="text-xl dark:text-white font-semibold leading-5 text-gray-800">
             Vendor
           </h3>

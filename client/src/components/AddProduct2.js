@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "./home/screen/Header";
 import { useNavigate } from "react-router-dom";
 
-const AddProduct = () => {
+const AddProduct = ({verifyToken}) => {
   let navigate = useNavigate()
   const name = useRef();
   const price = useRef();
@@ -57,6 +57,12 @@ const AddProduct = () => {
       productImage.current = file[0];
     }
   };
+
+
+  useEffect(()=>{
+    verifyToken("seller")
+  },[])
+
   return (
     <form
       onSubmit={addProduct}

@@ -68,7 +68,7 @@ function Vendor() {
     <div className="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
       <div>
         <span className="text-md text-slate-400">Products</span>
-        <h1 className="text-3xl font-bold text-slate-100">5</h1>
+        <h1 className="text-3xl font-bold text-slate-100">3</h1>
       </div>
       <div>
         <svg

@@ -60,6 +60,19 @@ router.post("/login",  async (req, res) => {
     }
   });
 
+router.put("/edit", isAuthenticated, async(req,res)=>{
+  try {
+    let user = await User.findById(req.payload.id);
+    if(!user){
+      return res.status(400).json({error: "User not found"})
+    }
+    await User.findByIdAndUpdate(req.payload.id, {$set: req.body})
+    return res.status(200).json({message: "User profile updated successfully"})
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 router.delete("/delete", isAuthenticated, async(req,res)=>{
     let user = await User.findById(req.payload.id)
     if(!user){
@@ -68,6 +81,19 @@ router.delete("/delete", isAuthenticated, async(req,res)=>{
 
     await User.deleteOne({_id: req.payload.id})
     return res.status(200).json({message: "User deleted successfully"})
+})
+
+router.get("/auth", isAuthenticated, async(req,res)=>{
+  try {
+    let user = await User.findById(req.payload.id);
+    if(!user){
+      return res.status(401).json({error: "User does not exist"})
+    }
+    return res.status(200).json(req.payload)
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({error: "Internal server error"})
+  }
 })
 
 

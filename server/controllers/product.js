@@ -99,7 +99,7 @@ router.post("/search", async (req, res) => {
     let result = await Product.find({ name: { $regex: textReg } }).populate(
       "seller"
     );
-    console.log(result);
+    // console.log(result);
     res.status(200).json({ result });
   } catch (error) {
     console.log(error);

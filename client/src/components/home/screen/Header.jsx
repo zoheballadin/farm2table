@@ -33,6 +33,9 @@ function Header() {
           {!token && <li>
             <Link to="/register">Signup</Link>
           </li>}
+          {
+            token && <li><Link to="/profile">Profile</Link></li>
+          }
           <li>
             {token ? <Link to="/signout" >Signout</Link> : <Link to="/login" >Login</Link>}
           </li>

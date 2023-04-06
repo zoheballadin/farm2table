@@ -1,12 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function List({productdataset}) {
+  let navigate = useNavigate()
   return (
     <>
      <h1 className='text-center text-2xl bg-red-200'>List of Products of this Vendor</h1>
     {
         productdataset.map((ele)=>(
-            <div>
+            <div onClick={()=>navigate(`/product/${ele._id}`)}>
     <div>
       <div className="px-32 py-20 bg-gray-100 grid  gap-10 mt-0">
         <div className="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">

@@ -1,14 +1,15 @@
 
 #hero {
-    background-image: url(https://www.artofliving.org/sites/www.artofliving.org/files/styles/original_image/public/landing_page_uploads/full_carousel/natural%20farming%20hero%20desktop.jpg.webp?itok=ekErY45d);
+    background-image: url("../assets/iftar.jpeg");
     width: 100%;
     height: 100vh;
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: top -80% right 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    /* justify-content: center; */
     padding: 0 80px;
   }
   
