@@ -18,6 +18,7 @@ import { AdminLogin } from "./components/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard";
 import SellerRequests from "./components/SellerRequests";
 import SearchSellers from "./components/SearchSellers";
+import TC from "./components/home/screen/TC";
 
 function App() {
   let navigate = useNavigate();
@@ -62,6 +63,7 @@ function App() {
       <Route path="/user/order/:orderId" element={<OrderInfo verifyToken={verifyToken}/>} />
       <Route path="/product/add" element={<AddProduct verifyToken={verifyToken}/>} />
       <Route path="/signout" element={<Signout />} />
+<<<<<<< HEAD
       <Route path="/seller/order/:orderId" element={<OrderInfoSeller verifyToken={verifyToken} />} />
       
       //admin
@@ -73,6 +75,10 @@ function App() {
 
       
 
+=======
+      <Route path="/seller/order/:orderId" element={<OrderInfoSeller />} />
+      <Route path="/home/termsandcondition" element={<TC/>} />
+>>>>>>> 4a0bc7a (A)
     </Routes>
   );
 }

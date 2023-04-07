@@ -3,9 +3,22 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from './home/screen/Header'
 
+
+
 const Product = () => {
 
+<<<<<<< HEAD
   let token = JSON.parse(localStorage.getItem("token"));
+=======
+  const [address,setaddress] = useState()
+
+
+function addresschange(e){
+  var address = e.target.value
+  setaddress(address)
+}
+console.log(address);
+>>>>>>> 4a0bc7a (A)
   let navigate = useNavigate()
     const {productId} = useParams()
     const [product,setProduct] = useState({
@@ -37,7 +50,8 @@ const Product = () => {
         {
           product : product._id,
           price : product.price,
-          qty : quantity.current.value
+          qty : quantity.current.value,
+          address:address
         },
         
         {
@@ -105,8 +119,21 @@ const Product = () => {
           <div class="flex ml-6 items-center">
             <span class="mr-3">Quantity</span>
             <div class="relative">
-              <input type='number' ref={quantity} min={3} class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
-                
+              <input type='number' ref={quantity} required min={3} class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
+              <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+          
+          <div class="flex ml-6 items-center">
+            <span class="mr-3">Address</span>
+            <div class="relative">
+              <input type='text' onChange={addresschange} required name='address' class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
               <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
                   <path d="M6 9l6 6 6-6"></path>

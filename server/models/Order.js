@@ -25,6 +25,10 @@ let orderSchema = new mongoose.Schema({
     total: {
         type: Number,
         required: true
+    },
+    address:{
+        type:String,
+        required:true
     }
 }, {timestamps: true})
 

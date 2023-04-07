@@ -6,12 +6,36 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
+<<<<<<< HEAD
 router.post("/add", isAuthenticated, async (req, res) => {
   try {
     req.body.buyer = req.payload.id;
     let product = await Product.findById(req.body.product);
     if (!product) {
       return res.status(400).json({ error: "Product not found" });
+=======
+router.post("/add", isAuthenticated, async(req,res)=>{
+    try {
+        console.log(req.body);
+        req.body.buyer = req.payload.id;
+        let product = await Product.findById(req.body.product)
+        console.log(product);
+        if(!product){
+            return res.status(400).json({error: "Product not found"})
+        }
+        req.body.price = product.price
+        req.body.product = product._id;
+        req.body.seller = product.seller;
+        req.body.total = req.body.price * req.body.qty;
+
+        let order = new Order(req.body);
+        await order.save()
+        await Product.findByIdAndUpdate(req.body.product, {$set: {stock: product.stock - req.body.qty}})
+        return res.status(200).json({message: "Order placed successfully"})
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({error: "Internal server error"})
+>>>>>>> 4a0bc7a (A)
     }
     req.body.price = product.price;
     req.body.product = product._id;
