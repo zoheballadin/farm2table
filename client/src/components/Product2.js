@@ -26,6 +26,7 @@ console.log(address);
       }
     })
     const quantity = useRef()
+    const date = useRef()
     useEffect(()=>{
       const fetch = async ()=>{
         try {
@@ -39,7 +40,7 @@ console.log(address);
       fetch()
     },[])
     const buy = async ()=>{
-    if(window.confirm('Confirm buy\n' + 'quantity : ' + quantity.current.value + '\nprice : ' +product.price + '\ntotal : ' + product.price * quantity.current.value)){
+    if(window.confirm('Confirm buy\n' + 'quantity : ' + quantity.current.value + '\nprice : ' +product.price + '\ntotal : ' + product.price * quantity.current.value + `\nDelivery day: ${date.current.value}`)){
       try {
         let token =  JSON.parse(localStorage.getItem('token')).token
         console.log(token)
@@ -48,7 +49,9 @@ console.log(address);
           product : product._id,
           price : product.price,
           qty : quantity.current.value,
-          address:address
+          address:address,
+          delivery_date: date.current.value
+
         },
         
         {
@@ -131,11 +134,17 @@ console.log(address);
             <span class="mr-3">Address</span>
             <div class="relative">
               <input type='text' onChange={addresschange} required name='address' class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
-              {/* <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
-                  <path d="M6 9l6 6 6-6"></path>
-                </svg>
-              </span> */}
+              
+            </div>
+          </div>
+        </div>
+        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+          
+          <div class="flex ml-6 items-center">
+            <span class="mr-3">Date of delivery</span>
+            <div class="relative">
+              <input type='date' ref={date}  required name='address' class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
+              
             </div>
           </div>
         </div>

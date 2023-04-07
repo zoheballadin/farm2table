@@ -29,6 +29,10 @@ let orderSchema = new mongoose.Schema({
     address:{
         type:String,
         required:true
+    },
+    delivery_date: {
+        type: Date,
+        required: true
     }
 }, {timestamps: true})
 
