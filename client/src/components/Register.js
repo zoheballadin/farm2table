@@ -32,8 +32,11 @@ export const Register = () => {
       toast.success(data.message)
     //   navigate("/login");
     } catch (error) {
-      toast.error(error.response.data.error)
-      console.log(error);
+      console.log(error.response.data)
+      if(error.response.data.errors[0].msg)
+        toast.error(error.response.data.errors[0].msg)
+    else
+    toast.error(error.response.data.error)
     }
   };
 

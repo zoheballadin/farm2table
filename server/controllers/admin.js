@@ -38,6 +38,7 @@ adminRoute.post('/login',async(req,res)=>{
 adminRoute.get('/requests',isAuthenticated,async(req,res)=>{
   try {
     const requests = await Admin.find({_id : req.payload.id}).populate('requests')
+    console.log(req.payload.id)
     res.status(200).json({requests : requests[0].requests})
   } catch (error) {
     console.log(error)
