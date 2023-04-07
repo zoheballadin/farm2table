@@ -64,8 +64,7 @@ function Vendor() {
                   {ele.fullname}
                 </h1>
                 <p className="text-slate-100 text-lg tracking-wide mb-6 md:max-w-lg">
-                  A farmer who wants to empower himself and sell his products
-                  with the help of farm2table
+                  {ele.bio}
                 </p>
                 <button className="border-2 px-6 py-4 rounded-md border-indigo-600 text-slate-100 hover:bg-indigo-600 hover:text-indigo-100 transition duration-75">
                   Role: {ele.role}
