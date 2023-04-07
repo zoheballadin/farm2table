@@ -33,6 +33,11 @@ let orderSchema = new mongoose.Schema({
     delivery_date: {
         type: Date,
         required: true
+    },
+    status: {
+        type: String,
+        default: "pending",
+        enum: ["pending", "accepted", "cancelled", "delivered"]
     }
 }, {timestamps: true})
 

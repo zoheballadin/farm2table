@@ -1,5 +1,5 @@
 import express from "express";
-import { isAuthenticated } from "../middleware/auth/index.js";
+import { isAuthenticated, isSeller } from "../middleware/auth/index.js";
 import Product from "../models/Product.js";
 import Order from "../models/Order.js";
 import User from "../models/User.js";
@@ -84,6 +84,23 @@ router.delete("/:orderId", isAuthenticated, async (req, res) => {
     console.log(error);
   }
 });
+
+router.patch("/:orderId", isAuthenticated, isSeller, async(req,res)=>{
+  try {
+    let order = await Order.findById(req.params.orderId);
+    if(!order || !order.seller.equals(req.payload.id)){
+      return res.status(400).json({error: "Order does not exist"})
+    }
+
+    await Order.findByIdAndUpdate(req.params.orderId, {$set: {status: req.body.status}})
+    return res.status(200).json({message: "Order status changed successfully"})
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({error: "Internal server error"})
+  }
+})
+
 
 router.get("/search/:username", async (req, res) => {
   try {
