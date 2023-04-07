@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
       path : "seller",
       match : {isApprove : true}
     }).exec();
-    products = products.filter(product => product.seller !== null);
+    // products = products.filter(product => product.seller !== null);
     return res.status(200).json(products);
   } catch (error) {
     console.log(error);
@@ -104,7 +104,7 @@ router.post("/search", async (req, res) => {
       path : "seller",
       match : {isApprove : true}
     }).exec();
-    products = products.filter(product => product.seller !== null);
+    // products = products.filter(product => product.seller !== null);
     // console.log(result);
     res.status(200).json({ products });
   } catch (error) {
