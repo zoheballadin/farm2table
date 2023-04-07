@@ -7,7 +7,7 @@ function Card({ orderdata }) {
     <div className="flex flex-wrap ml-40">
       {
         orderdata.length ?
- orderdata.map((ele) => (
+ orderdata.map((ele) =>{ if(ele.seller) return (
         <div className=" mt-28 ml-8 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <Link href="#">
             <img
@@ -95,7 +95,7 @@ function Card({ orderdata }) {
             </div>
           </div>
         </div>
-      )) : <div>NO Match Found </div>}
+      )}) : <div>NO Match Found </div>}
     </div>
   );
 }
