@@ -13,8 +13,8 @@ export const Register = () => {
    address: ""
   });
 
-  let { fullname, email, phone, password, password2, bio, profession } =
-    userData;
+  // let { fullname, email, phone, password, password2, bio, profession } =
+  //   userData;
 
   const onChangeHandler = (e) => {
     setUserData({

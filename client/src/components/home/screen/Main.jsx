@@ -6,8 +6,9 @@ function Main() {
   return (
    <>      
    <section id="hero">
-        <h4 className='text-white mt-60'>Your iftar,</h4>
-        <h2 className='text-white'>Our responsibility</h2>
+        <h4 className='text-white mt-28 font-semibold italic antialiased'>Your iftar,</h4>
+        <h2 className='text-white font-bold subpixel-antialiased'>Our responsibility.
+        </h2>
         {/* <h1>On all products</h1>
         <p>save more coupons & up to 70% off!</p>
         <button>Shop now</button> */}
