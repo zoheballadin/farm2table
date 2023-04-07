@@ -108,9 +108,9 @@ function Vendor() {
                     isApprove.current = true;
                     approveOrReject();
                   }}
-                  className="bg-slate-600 p-6 rounded-md mb-4"
+                  className="bg-slate-600 p-6 rounded-md mb-4 cursor-pointer"
                 >
-                  <h2 className="text-slate-100 text-2xl font-semibold">
+                  <h2 className="text-slate-100 text-2xl font-semibold ">
                     Approve
                   </h2>
                 </div>
@@ -119,7 +119,7 @@ function Vendor() {
                     isApprove.current = false;
                     approveOrReject();
                   }}
-                  className="bg-slate-600 p-6 rounded-md mb-4"
+                  className="bg-slate-600 p-6 rounded-md mb-4 cursor-pointer"
                 >
                   <h2 className="text-slate-100 text-2xl font-semibold">
                     Reject

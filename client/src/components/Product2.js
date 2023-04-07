@@ -148,7 +148,7 @@ console.log(address);
           <span class="title-font font-medium text-2xl text-gray-900">Current Stock: {product.stock}</span><br/>
        <span class="title-font font-medium text-2xl text-blue-900    "> <Link to={`/vendor?user=${product.seller._id}`}> Vendor: {product.seller.fullname}</Link> </span>
 
-          <button onClick={token ? buy : ()=>navigate("/login")} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button>
+          {token && token.role == "buyer" ? <button onClick={token ? buy : ()=>navigate("/login")} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button> : <h1 className='text-red-700'>This is a seller account. You need a buyer account to make purchases</h1>}
           {/* <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>

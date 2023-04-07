@@ -16,6 +16,7 @@ export const AdminLogin = () => {
       const onSubmit = async (e) => {
         try {
           e.preventDefault();
+          console.log("hi")
           let { data } = await axios.post("/api/admin/login", admin);
           console.log(data);
           let tokenData = {

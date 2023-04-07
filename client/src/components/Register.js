@@ -33,7 +33,7 @@ export const Register = () => {
     //   navigate("/login");
     } catch (error) {
       toast.error(error.response.data.error)
-      console.log(error.response.data.error);
+      console.log(error);
     }
   };
 
@@ -117,6 +117,16 @@ export const Register = () => {
                   />
                   {/* <label htmlFor="name" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Enter your Name</label> */}
                 </div>
+                <input
+                    onChange={onChangeHandler}
+                    autoComplete="off"
+                    id="bio"
+                    name="bio"
+                    type="text"
+                    className="peer  inline h-10 w-[33vw] -ml-12  border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                    placeholder="Enter a bio"
+                    required
+                  />
                 <h5 className="mt-24">Are you a seller or buyer?</h5>
 
                 <label

@@ -9,7 +9,7 @@ export const Profile = () => {
     e.preventDefault()
     let token = JSON.parse(localStorage.getItem("token"))
     
-    let {data} = await axios.put("api/user/edit",{}, {
+    let {data} = await axios.put("api/user/edit",user, {
         headers: {
             "auth-token": token.token
         }
@@ -42,7 +42,7 @@ export const Profile = () => {
   return (
     <>
       <Header />
-      <h1 className="text-center font-bold text-3xl my-20 mt-32">
+      <h1 className="text-center font-bold text-3xl my-12 mt-32">
         Profile Info
       </h1>
       <div className="flex">
@@ -97,6 +97,17 @@ export const Profile = () => {
                 class="relative flex items-center mt-2"
               >
                 <h2 className="text-xl">{user.role}</h2>
+              </div>
+            </div>
+            <div class="flex flex-col my-4">
+              <label for="password" class="text-gray-700">
+                Bio
+              </label>
+              <div
+                x-data="{ show: false }"
+                class="relative flex items-center mt-2"
+              >
+                <h2 className="text-xl">{user.bio}</h2>
               </div>
             </div>
 
@@ -164,7 +175,25 @@ export const Profile = () => {
                   name="phone"
                   id="phone"
                   class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                  placeholder="Enter your password"
+                  placeholder="Enter your phone"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col my-4">
+              <label for="password" class="text-gray-700">
+                Bio
+              </label>
+              <div
+                x-data="{ show: false }"
+                class="relative flex items-center mt-2"
+              >
+                <input
+                onChange={onChange}
+                  name="bio"
+                  id="bio"
+                  class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+                  placeholder="Enter your bio"
                   type="text"
                 />
               </div>

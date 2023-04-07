@@ -129,7 +129,7 @@ theme="dark" />
                     Rs. {order.price}{" "}
                   </p>
                   <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">
-                    {order.qty} kg
+                    {order.qty} 
                   </p>
                   <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">
                     Rs. {order.total}
@@ -178,7 +178,7 @@ theme="dark" />
                     Quantity{" "}
                   </p>
                   <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
-                    {order.qty} kg
+                    {order.qty} 
                   </p>
                 </div>
                 

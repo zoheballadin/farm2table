@@ -22,7 +22,7 @@ function Card({ orderdata }) {
                 {ele.name}
               </h5>
             </Link>
-            <div className="flex flex-wrap items-center mt-2.5 mb-5">
+            {/* <div className="flex flex-wrap items-center mt-2.5 mb-5">
               <svg
                 aria-hidden="true"
                 className="w-5 h-5 text-yellow-300"
@@ -76,7 +76,7 @@ function Card({ orderdata }) {
               <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
                 5.0
               </span>
-            </div>
+            </div> */}
             <span className=" dark:text-white">
               {"Description:" + ele.description}
             </span>
