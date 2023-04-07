@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 function Card({ orderdata }) {
   console.log(orderdata + "card");
   return (
-    <div className="flex flex-wrap ml-40">
+    <div className="flex flex-wrap ml-40 drop-shadow-lg items-center">
       {
         orderdata.length ?
  orderdata.map((ele) => (
-        <div className=" mt-28 ml-8 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className=" mt-28 ml-4 w-full max-w-sm bg-white  text-black border-gray-300 rounded-lg drop-shadow-lg dark:bg-white  dark:border-gray-700">
           <Link href="#">
             <img
-              className="p-8 rounded-t-lg"
+              className="p-8 rounded-t-lg object-contain h-80 w-100"
               src={ele.imageUrl}
               alt="product image"
             />
           </Link>
           <div className="px-5 pb-5">
             <Link href="#">
-              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray">
                 {ele.name}
               </h5>
             </Link>
@@ -77,23 +77,26 @@ function Card({ orderdata }) {
                 5.0
               </span>
             </div>
-            <span className=" dark:text-white">
-              {"Description:" + ele.description}
+            <span className=" dark:text-gray">
+              {"Description: " + ele.description}
             </span>
             <div className="flex items-center justify-between">
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+              <span className="text-3xl font-bold text-gray-900 dark:text-black">
                 {"₹" + ele.price}
               </span>
               <br />
 
-              <Link
+              
+            </div>
+            <br/>
+            <Link
                 to={`/product/${ele._id}`}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="content-center text-japan bg-emerald-700 hover:bg-emerald-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 "
               >
                 Buy Now
               </Link>
-            </div>
           </div>
+          
         </div>
       )) : <div>NO Match Found </div>}
     </div>

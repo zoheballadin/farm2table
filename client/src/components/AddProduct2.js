@@ -43,14 +43,14 @@ const AddProduct = ({verifyToken}) => {
     
     const extension = file[0].name.split(".").pop();
     if (
-      extension != "jpeg" &&
-      extension != "png" &&
-      extension != "jpg" &&
-      extension != "gif" &&
-      extension != "tif" &&
-      extension != "tiff" &&
-      extension != "bmp" &&
-      extension != "webp"
+      extension !== "jpeg" &&
+      extension !== "png" &&
+      extension !== "jpg" &&
+      extension !== "gif" &&
+      extension !== "tif" &&
+      extension !== "tiff" &&
+      extension !== "bmp" &&
+      extension !== "webp"
     ) {
       alert("select image type");
     } else {

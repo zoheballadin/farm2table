@@ -31,7 +31,7 @@ function Home() {
   return (
     <>
       <Header />
-      <hr className="mt-4" />
+      <hr className="mt-0" />
       <Main />
       <hr className="mt-4" />
       <hr />
@@ -44,7 +44,7 @@ function Home() {
         Search
       </label>
       <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <div class="absolute inset-y-0 left-96 flex items-center pl-3 pointer-events-none">
           <svg
             aria-hidden="true"
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -61,16 +61,18 @@ function Home() {
             ></path>
           </svg>
         </div>
-        <input
-          onChange={(e) =>{ searchinput && setReload(!reload) ;setSearch(e.target.value)}}
-          type="search"
-          id="default-search"
-          class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search For Fruits And Vegetables"
-          required
-        />
+<div class="flex justify-center">
+  <input
+    onChange={(e) =>{ searchinput && setReload(!reload) ;setSearch(e.target.value)}}
+    type="search"
+    id="default-search"
+    class="w-1/2 p-4 pl-10 text-sm text-gray-900 border border-gray-100 drop-shadow-lg rounded-full focus:outline-none focus:drop-shadow-2xl "
+    placeholder="Search for Iftar Boxes"
+    required
+  />
+</div>
         <button
-          class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class=" text-japan absolute right-96 bottom-1.5 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-emerald-600 dark:hover:bg-emerald-700"
           onClick={() => search(searchinput)}
         >
           Search
