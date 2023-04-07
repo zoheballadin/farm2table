@@ -121,5 +121,15 @@ router.get("/profile", isAuthenticated, async(req,res)=>{
   }
 })
 
+router.get('/isapprove',isAuthenticated,async(req,res)=>{
+  try {
+    const sellerFound = await User.findOne({_id : req.payload.id},{isApprove : 1})
+    console.log(sellerFound)
+     res.status(200).json({isapprove : sellerFound.isApprove})
 
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({error: "Internal server error"})
+  }
+})
 export default router

@@ -22,7 +22,7 @@ function Home() {
       text: query,
     });
     console.log(data);
-    setuserdata(data.result);
+    setuserdata(data.products);
   };
 
   useEffect(() => {

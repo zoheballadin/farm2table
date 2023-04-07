@@ -20,10 +20,6 @@ let productSchema = new mongoose.Schema(
         type: Number,
         default: 0
     },
-    category: {
-        type: String,
-        enum: ["fruits", "vegetables"]        //fruits and vegetables
-    },
     description: {
         type: String,
         required: true
