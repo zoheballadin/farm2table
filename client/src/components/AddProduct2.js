@@ -45,6 +45,8 @@ const AddProduct = ({ verifyToken }) => {
     e.preventDefault();
     const file = e.target.files;
 
+    if(!file) return
+
     const extension = file[0].name.split(".").pop();
     if (
       extension != "jpeg" &&

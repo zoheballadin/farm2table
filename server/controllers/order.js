@@ -17,7 +17,13 @@ router.post("/add", isAuthenticated, async (req, res) => {
     req.body.product = product._id;
     req.body.seller = product.seller;
     req.body.total = req.body.price * req.body.qty;
-
+    
+    if(qty <= 20){
+      req.body.delivery_cost = req.body.qty * 20
+    }else{
+      req.body.delivery_cost = 0
+    }
+    
     let order = new Order(req.body);
     await order.save();
     await Product.findByIdAndUpdate(req.body.product, {

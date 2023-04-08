@@ -38,6 +38,11 @@ let orderSchema = new mongoose.Schema({
         type: String,
         default: "pending",
         enum: ["pending", "accepted", "cancelled", "delivered"]
+    },
+    delivery_cost: {
+        type: Number,
+        default: 20,
+        required: true
     }
 }, {timestamps: true})
 
