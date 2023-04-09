@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/add", isAuthenticated, async (req, res) => {
   try {
+    console.log(req.body);
     req.body.buyer = req.payload.id;
     let product = await Product.findById(req.body.product);
     if (!product) {
@@ -18,7 +19,7 @@ router.post("/add", isAuthenticated, async (req, res) => {
     req.body.seller = product.seller;
     req.body.total = req.body.price * req.body.qty;
     
-    if(qty <= 20){
+    if(req.body.qty <= 20){
       req.body.delivery_cost = req.body.qty * 20
     }else{
       req.body.delivery_cost = 0
