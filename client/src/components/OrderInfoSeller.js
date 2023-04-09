@@ -125,10 +125,10 @@ export const OrderInfoSeller = ({ verifyToken }) => {
                 </div>
                 <div class="flex justify-between space-x-8 items-start w-full">
                   <p class="text-base dark:text-white xl:text-lg leading-6">
-                    Rs. {order.price}{" "}
+                    Rs. {order.price}
                   </p>
                   <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">
-                    {order.qty} kg
+                    {order.qty}
                   </p>
                   <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">
                     Rs. {order.total}
@@ -185,10 +185,18 @@ export const OrderInfoSeller = ({ verifyToken }) => {
                 </div>
                 <div class="flex justify-between items-center w-full">
                   <p class="text-base dark:text-white leading-4 text-gray-800">
-                    Quantity{" "}
+                    Quantity
                   </p>
                   <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
-                    {order.qty} kg
+                    {order.qty}
+                  </p>
+                </div>
+                <div class="flex justify-between items-center w-full">
+                  <p class="text-base dark:text-white leading-4 text-gray-800">
+                    Delivery Cost
+                  </p>
+                  <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
+                    {order.delivery_cost}
                   </p>
                 </div>
               </div>
@@ -197,7 +205,7 @@ export const OrderInfoSeller = ({ verifyToken }) => {
                   Total
                 </p>
                 <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">
-                  Rs. {order.total}
+                  Rs. {order.total + order.delivery_cost}
                 </p>
               </div>
             </div>

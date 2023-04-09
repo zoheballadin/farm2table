@@ -40,7 +40,13 @@ console.log(address);
       fetch()
     },[])
     const buy = async ()=>{
-    if(window.confirm('Confirm buy\n' + 'quantity : ' + quantity.current.value + '\nprice : ' +product.price + '\ntotal : ' + product.price * quantity.current.value + `\nDelivery day: ${date.current.value}`)){
+      let delivery_cost = 20
+      if(quantity.current.value >20){
+        delivery_cost = 0
+      }else {
+        delivery_cost*= quantity.current.value
+      }
+    if(window.confirm('Confirm buy\n' + 'quantity : ' + quantity.current.value + '\nprice : ' +product.price + '\ntotal : ' + product.price * quantity.current.value + `\nDelivery day: ${date.current.value} \nDelivery cost: ${delivery_cost}`)){
       try {
         let token =  JSON.parse(localStorage.getItem('token')).token
         console.log(token)
@@ -119,6 +125,7 @@ console.log(address);
           <div class="flex ml-6 items-center">
             <span class="mr-3">Quantity</span>
             <div class="relative">
+              <p className='text-red-500'>Order more than 20 for free delivery</p >
               <input type='number' ref={quantity} required min={3} class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
               {/* <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">

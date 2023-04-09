@@ -167,6 +167,14 @@ theme="dark" />
               <div class="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
                 <div class="flex justify-between w-full">
                   <p class="text-base dark:text-white leading-4 text-gray-800">
+                    Order status
+                  </p>
+                  <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
+                    {order.status}
+                  </p>
+                </div>
+                <div class="flex justify-between w-full">
+                  <p class="text-base dark:text-white leading-4 text-gray-800">
                     Price per piece
                   </p>
                   <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
@@ -181,6 +189,14 @@ theme="dark" />
                     {order.qty} 
                   </p>
                 </div>
+                <div class="flex justify-between items-center w-full">
+                  <p class="text-base dark:text-white leading-4 text-gray-800">
+                    Delivery fee
+                  </p>
+                  <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
+                    {order.delivery_cost} 
+                  </p>
+                </div>
                 
               </div>
               <div class="flex justify-between items-center w-full">
@@ -188,7 +204,7 @@ theme="dark" />
                   Total
                 </p>
                 <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">
-                  Rs. {order.total}
+                  Rs. {order.total + order.delivery_cost}
                 </p>
               </div>
             </div>
