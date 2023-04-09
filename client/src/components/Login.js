@@ -32,8 +32,8 @@ export const Login = () => {
           }
         } catch (error) {
           console.log(error.response.data)
-          if(error.response.data.errors[0].msg)
-            toast.error(error.response.data.errors[0].msg)
+          if(error.response.data.error)
+            toast.error(error.response.data.error)
         else
         toast.error(error.response.data.error)
 

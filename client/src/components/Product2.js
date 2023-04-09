@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from './home/screen/Header'
+import Modal from './Modal'
 
 
 
@@ -9,13 +10,25 @@ const Product = () => {
 
   let token = JSON.parse(localStorage.getItem("token"));
   const [address,setaddress] = useState()
+  const [userdate,setuserdate] = useState()
+  const [userquantity,setuserquantity] = useState()
+
+  const [modaldata,setmodaldata]= useState({})
 
 
 function addresschange(e){
   var address = e.target.value
   setaddress(address)
 }
-console.log(address);
+function quantitychange(e){
+  var quantity = e.target.value
+  setuserquantity(quantity)
+}
+function datechange(e){
+  var date = e.target.value
+  setuserdate(date)
+}
+
   let navigate = useNavigate()
     const {productId} = useParams()
     const [product,setProduct] = useState({
@@ -31,7 +44,6 @@ console.log(address);
       const fetch = async ()=>{
         try {
           const {data} = await axios.get('/api/product/' + productId)
-        console.log(data)
         setProduct(data)
         } catch (error) {
           console.log(error)
@@ -39,39 +51,20 @@ console.log(address);
       }
       fetch()
     },[])
-    const buy = async ()=>{
-      let delivery_cost = 20
-      if(quantity.current.value >20){
-        delivery_cost = 0
-      }else {
-        delivery_cost*= quantity.current.value
-      }
-    if(window.confirm('Confirm buy\n' + 'quantity : ' + quantity.current.value + '\nprice : ' +product.price + '\ntotal : ' + product.price * quantity.current.value + `\nDelivery day: ${date.current.value} \nDelivery cost: ${delivery_cost}`)){
-      try {
-        let token =  JSON.parse(localStorage.getItem('token')).token
-        console.log(token)
-        const {data} = await axios.post('/api/order/add',
-        {
-          product : product._id,
-          price : product.price,
-          qty : quantity.current.value,
-          address:address,
-          delivery_date: date.current.value
+ 
+    
+ 
 
-        },
-        
-        {
-          headers : {
-            'auth-token' : token
-          }
-        })
-        console.log(data)
-        navigate("/user/orders")
-      } catch (error) {
-        console.log(error)
-      }
+    let data = {
+      qty:userquantity,
+      delivery_date:userdate,
+      product:product._id,
+      price:product.price,
+      address:address,
+      productname:product.name
     }
-    }
+ 
+
   return (
     
 <section class="text-gray-700 body-font overflow-hidden bg-white">
@@ -126,7 +119,7 @@ console.log(address);
             <span class="mr-3">Quantity</span>
             <div class="relative">
               <p className='text-red-500'>Order more than 20 for free delivery</p >
-              <input type='number' ref={quantity} required min={3} class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
+              <input type='number' onChange={quantitychange} ref={quantity} required min={3} class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
               {/* <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
                   <path d="M6 9l6 6 6-6"></path>
@@ -150,7 +143,7 @@ console.log(address);
           <div class="flex ml-6 items-center">
             <span class="mr-3">Date of delivery</span>
             <div class="relative">
-              <input type='date' ref={date}  required name='address' class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
+              <input type='date' ref={date} onChange={datechange}  required name='address' class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"/>
               
             </div>
           </div>
@@ -160,8 +153,9 @@ console.log(address);
           <br/>
           <span class="title-font font-medium text-2xl text-gray-900">Current Stock: {product.stock}</span><br/>
        <span class="title-font font-medium text-2xl text-blue-900    "> <Link to={`/vendor?user=${product.seller._id}`}> Vendor: {product.seller.fullname}</Link> </span>
+       <Modal data={data}/>
 
-          {token && token.role == "buyer" ? <button onClick={token ? buy : ()=>navigate("/login")} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button> : <h1 className='text-red-700'>This is a seller account. You need a buyer account to make purchases</h1>}
+         
           {/* <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
