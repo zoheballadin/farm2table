@@ -32,10 +32,13 @@ export const Login = () => {
           }
         } catch (error) {
           console.log(error.response.data)
-          if(error.response.data.error)
-            toast.error(error.response.data.error)
-        else
-        toast.error(error.response.data.error)
+          if (error.response.data.errors) {
+            error.response.data.error = "";
+            error.response.data.errors.forEach((item) => {
+              error.response.data.error += "\n" + item.msg + ". " ;
+            });
+          }
+          toast.error(error.response.data.error)
 
         }
       };
